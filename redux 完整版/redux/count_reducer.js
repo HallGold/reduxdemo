@@ -1,3 +1,6 @@
+/* 
+reducer处理函数
+*/
 import { INCREMENT, DECREMENT } from "./contsant";
 
 const initState = 0;

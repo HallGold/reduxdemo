@@ -8,8 +8,7 @@ export default class Count extends Component {
   // 加
   increment = () => {
     const { value } = this.selectNumber;
-    // 通知redux加value
-    store.dispatch(createIncrementAction(value * 1));
+    store.dispatch(createIncrementAction(value * 1)); // 通过dispatch传递action对象给reducer
   };
   // 减
   decrement = () => {
