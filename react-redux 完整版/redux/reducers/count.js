@@ -1,8 +1,8 @@
-import { INCREMENT, DECREMENT } from "./contsant";
+import { INCREMENT, DECREMENT } from "../contsant";
 
 const initState = 0;
 export default function countReducer(preState = initState, action) {
-  //   console.log(preState, action);
+  console.log("count ####");
   const { type, data } = action;
   switch (type) {
     case INCREMENT:

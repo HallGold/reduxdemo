@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment, decrement, incrementAsync } from "../../redux/actions/count";
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from "../../redux/actions/count";
 class Count extends Component {
   // 加
   increment = () => {
@@ -64,8 +64,8 @@ export default connect(
 
   // mapDispatchToProps简写
   {
-    increment,
-    decrement,
-    incrementAsync,
+    increment: createIncrementAction,
+    decrement: createDecrementAction,
+    incrementAsync: createIncrementAsyncAction,
   }
 )(Count);

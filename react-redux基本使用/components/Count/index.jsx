@@ -24,6 +24,7 @@ export default class Count extends Component {
     this.props.incrementAsync(value * 1, 500);
   };
   render() {
+    console.log(this.props);
     return (
       <div>
         <h1>当前求和为:{this.props.count}</h1>

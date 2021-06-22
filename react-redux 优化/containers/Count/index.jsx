@@ -1,6 +1,14 @@
-import React, { Component } from "react";
+/* 
+引入 connect 用于关联UI组件和redux
+*/
 import { connect } from "react-redux";
-import { increment, decrement, incrementAsync } from "../../redux/actions/count";
+
+/* 
+引入 action
+*/
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from "../../redux/count_action";
+import React, { Component } from "react";
+
 class Count extends Component {
   // 加
   increment = () => {
@@ -25,11 +33,10 @@ class Count extends Component {
     this.props.incrementAsync(value * 1, 500);
   };
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <div>
         <h1>当前求和为:{this.props.count}</h1>
-        <p>当前总人数为:{this.props.persons.length}</p>
         <select
           ref={(c) => {
             this.selectNumber = c;
@@ -50,11 +57,11 @@ class Count extends Component {
 }
 
 /* 
-  创建容器组件
-  使用connect()()创建 并且 暴露一个Count的容器组件
-  */
+创建容器组件
+使用connect()()创建 并且 暴露一个Count的容器组件
+*/
 export default connect(
-  (state) => ({ count: state.count, persons: state.persons }),
+  (store) => ({ count: store }),
   // mapDispatchToProps一般写法
   //   (dispatch) => ({
   //     increment: (data) => { dispatch(createIncrementAction(data))},
@@ -64,8 +71,8 @@ export default connect(
 
   // mapDispatchToProps简写
   {
-    increment,
-    decrement,
-    incrementAsync,
+    increment: createIncrementAction,
+    decrement: createDecrementAction,
+    incrementAsync: createIncrementAsyncAction,
   }
 )(Count);
